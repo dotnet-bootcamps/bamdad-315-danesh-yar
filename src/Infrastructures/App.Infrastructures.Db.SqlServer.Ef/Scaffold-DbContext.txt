@@ -1,0 +1,4 @@
+﻿Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Bamdad315TicketingDb' -Context AppDbContext -ContextDir DbCtxs -OutputDir Entities  Microsoft.EntityFrameworkCore.SqlServer
+
+
+https://learn.microsoft.com/en-us/ef/core/managing-schemas/scaffolding/?tabs=vs
