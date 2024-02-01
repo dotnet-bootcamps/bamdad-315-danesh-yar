@@ -19,18 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\Customer\Controllers\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Models\" />
-    <Folder Include="Areas\Customer\Views\" />
-    <Folder Include="Areas\Support\Controllers\" />
     <Folder Include="Areas\Support\Data\" />
     <Folder Include="Areas\Support\Models\" />
-    <Folder Include="Areas\Support\Views\" />
   </ItemGroup>
 
 </Project>
