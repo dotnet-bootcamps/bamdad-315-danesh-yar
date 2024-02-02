@@ -1,84 +1,158 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using App.Core.Domain.Entities;
+using App.Infrastructures.Db.SqlServer.Ef.DbCtxs;
 
 namespace App.EndPoints.TicketingUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoriesController : Controller
     {
-        // GET: CategoriesController
-        public ActionResult Index()
+        private readonly AppDbContext _context;
+
+        public CategoriesController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Admin/Categories
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.TicketCategories.ToListAsync());
+        }
+
+        // GET: Admin/Categories/Details/5
+        public async Task<IActionResult> Details(byte? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ticketCategory = await _context.TicketCategories
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ticketCategory == null)
+            {
+                return NotFound();
+            }
+
+            return View(ticketCategory);
+        }
+
+        // GET: Admin/Categories/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // GET: CategoriesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CategoriesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CategoriesController/Create
+        // POST: Admin/Categories/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create([Bind("Id,ParentId,Title")] TicketCategory ticketCategory)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _context.Add(ticketCategory);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(ticketCategory);
         }
 
-        // GET: CategoriesController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Admin/Categories/Edit/5
+        public async Task<IActionResult> Edit(byte? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ticketCategory = await _context.TicketCategories.FindAsync(id);
+            if (ticketCategory == null)
+            {
+                return NotFound();
+            }
+            return View(ticketCategory);
         }
 
-        // POST: CategoriesController/Edit/5
+        // POST: Admin/Categories/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(byte id, [Bind("Id,ParentId,Title")] TicketCategory ticketCategory)
         {
-            try
+            if (id != ticketCategory.Id)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(ticketCategory);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TicketCategoryExists(ticketCategory.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(ticketCategory);
         }
 
-        // GET: CategoriesController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Admin/Categories/Delete/5
+        public async Task<IActionResult> Delete(byte? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ticketCategory = await _context.TicketCategories
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (ticketCategory == null)
+            {
+                return NotFound();
+            }
+
+            return View(ticketCategory);
         }
 
-        // POST: CategoriesController/Delete/5
-        [HttpPost]
+        // POST: Admin/Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(byte id)
         {
-            try
+            var ticketCategory = await _context.TicketCategories.FindAsync(id);
+            if (ticketCategory != null)
             {
-                return RedirectToAction(nameof(Index));
+                _context.TicketCategories.Remove(ticketCategory);
             }
-            catch
-            {
-                return View();
-            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool TicketCategoryExists(byte id)
+        {
+            return _context.TicketCategories.Any(e => e.Id == id);
         }
     }
 }

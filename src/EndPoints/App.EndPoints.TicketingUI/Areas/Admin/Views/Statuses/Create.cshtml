@@ -1,12 +1,12 @@
-﻿@model App.Core.Domain.Entities.TicketPriority
+﻿@model App.Core.Domain.Entities.TicketStatus
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>ایجاد رکورد</h1>
+<h1>Create</h1>
 
-<h4>اولویت</h4>
+<h4>TicketStatus</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,9 +23,9 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
+                <label asp-for="MaxWaitingHours" class="control-label"></label>
+                <input asp-for="MaxWaitingHours" class="form-control" />
+                <span asp-validation-for="MaxWaitingHours" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -35,7 +35,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">بازگشت به لیست</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

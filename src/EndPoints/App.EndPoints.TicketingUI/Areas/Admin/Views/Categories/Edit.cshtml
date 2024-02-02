@@ -1,12 +1,12 @@
-﻿@model App.Core.Domain.Entities.TicketPriority
+﻿@model App.Core.Domain.Entities.TicketCategory
 
 @{
-    ViewData["Title"] = "ویرایش";
+    ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
 
-<h4>TicketPriority</h4>
+<h4>TicketCategory</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,14 +14,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
+                <label asp-for="ParentId" class="control-label"></label>
+                <input asp-for="ParentId" class="form-control" />
+                <span asp-validation-for="ParentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
