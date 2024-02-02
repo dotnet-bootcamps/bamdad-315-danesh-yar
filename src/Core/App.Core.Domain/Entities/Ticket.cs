@@ -8,46 +8,46 @@ public partial class Ticket
     public int Id { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "موضوع درخواست")]
     public string Subject { get; set; } = null!;
 
 
-    [Display(Name = "")]
+    [Display(Name = "شناسه دسته بندی")]
     public byte CategoryId { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "شناسه الویت")]
     public byte PriorityId { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "شناسه وضعیت")]
     public byte CurrentStatusId { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "توضیخات درخواست")]
     public string Description { get; set; } = null!;
 
 
-    [Display(Name = "")]
+    [Display(Name = "شناسه درخواست کننده")]
     public int SubmitedBy { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "تارخ ثبت درخواست")]
     public DateTime SubmittedAt { get; set; }
 
 
-    [Display(Name = "")]
+    [Display(Name = "دسته بندی")]
     public virtual TicketCategory Category { get; set; } = null!;
 
 
-    [Display(Name = "")]
+    [Display(Name = "وضعیت درخواست")]
     public virtual TicketStatus CurrentStatus { get; set; } = null!;
 
 
-    [Display(Name = "")]
+    [Display(Name = "الویت درخواست")]
     public virtual TicketPriority Priority { get; set; } = null!;
 
 
-    [Display(Name = "")]
+    [Display(Name = "تاریحچه درخواست")]
     public virtual ICollection<TicketHistory> TicketHistories { get; set; } = new List<TicketHistory>();
 }
