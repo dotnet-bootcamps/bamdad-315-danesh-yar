@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<App.Core.Domain.Entities.TicketPriority>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "اولویت ها";
 }
 
-<h1>Index</h1>
+<h1>لیست اولویت ها</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">رکورد جدید</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -23,7 +26,10 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -31,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">مشاهده</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">حدف</a>
             </td>
         </tr>
 }

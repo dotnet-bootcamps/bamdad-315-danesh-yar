@@ -15,7 +15,7 @@ namespace App.Infrastructures.Db.SqlServer.Ef.EntitiesConfigs
         public void Configure(EntityTypeBuilder<Ticket> builder)
         {
 
-            builder.Property(e => e.Id).ValueGeneratedNever();
+            builder.Property(e => e.Id).ValueGeneratedOnAdd();
             builder.Property(e => e.Subject).HasMaxLength(250);
 
             builder.HasOne(d => d.Category).WithMany(p => p.Tickets)
