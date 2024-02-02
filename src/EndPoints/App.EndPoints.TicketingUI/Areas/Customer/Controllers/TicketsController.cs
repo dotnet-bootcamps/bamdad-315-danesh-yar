@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Core.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace App.EndPoints.TicketingUI.Areas.Customer.Controllers
 {
@@ -7,7 +8,8 @@ namespace App.EndPoints.TicketingUI.Areas.Customer.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new List<Ticket>();
+            return View(model);
         }
     }
 }
