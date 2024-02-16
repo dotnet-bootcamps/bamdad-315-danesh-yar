@@ -33,13 +33,14 @@ namespace App.EndPoints.TicketingUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var ticketCategory = await _context.TicketCategories
-                .FirstOrDefaultAsync(m => m.Id == id);
+               .FirstOrDefaultAsync(m => m.Id == id);
+
             if (ticketCategory == null)
             {
                 return NotFound();
             }
+
 
             return View(ticketCategory);
         }

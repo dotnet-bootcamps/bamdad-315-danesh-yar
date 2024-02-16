@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bamdad.Framework.Web" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+	  <PackageReference Include="NLog" Version="5.2.2" />
+	  <PackageReference Include="NLog.Database" Version="5.2.2" />
+	  <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.2" />
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +25,7 @@
     <ProjectReference Include="..\..\Core\App.Core.UseCases\App.Core.UseCases.csproj" />
     <ProjectReference Include="..\..\Infrastructures\App.Infrastructures.Data.Repo.Ef\App.Infrastructures.Data.Repo.Ef.csproj" />
     <ProjectReference Include="..\..\Infrastructures\App.Infrastructures.Db.SqlServer.Ef\App.Infrastructures.Db.SqlServer.Ef.csproj" />
+	  
   </ItemGroup>
 
   <ItemGroup>

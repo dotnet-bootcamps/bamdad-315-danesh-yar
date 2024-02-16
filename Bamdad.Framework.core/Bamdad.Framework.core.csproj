@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="EasyCaching.Extensions.EasyCompressor" Version="1.4.0" />
+		<PackageReference Include="EasyCaching.Redis" Version="1.9.0" />
+		<PackageReference Include="EasyCaching.Serialization.MessagePack" Version="1.9.0" />
+		<PackageReference Include="EasyCompressor.LZ4" Version="1.4.0" />
+	</ItemGroup>
+
+</Project>
