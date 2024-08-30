@@ -3,3 +3,6 @@ this repository was created for .Net Bootcamp (Bamdad-Institute #315) and ```is 
 
 ## Dotnet Lessons Learned
 - Ticketing Project
+  - Admin Panel
+  - Customer Panel
+  - ...
